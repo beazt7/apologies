@@ -1,5 +1,6 @@
 import { Image as ImageIcon } from 'lucide-react';
 import type { MemoryItemContent } from '../../types/content';
+import { resolveAssetPath } from '../../utils/assetPath';
 
 interface MemoryFrameProps {
   memory: MemoryItemContent;
@@ -32,7 +33,7 @@ export function MemoryFrame({ memory, tilt }: MemoryFrameProps) {
       <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-cream-100 to-blush-100 dark:from-neutral-800 dark:to-neutral-700">
         {memory.imageSrc ? (
           <img
-            src={memory.imageSrc}
+            src={resolveAssetPath(memory.imageSrc)}
             alt={memory.altText}
             loading="lazy"
             className="h-full w-full object-cover"
