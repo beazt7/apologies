@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-neutral-800 antialiased dark:bg-neutral-950 dark:text-neutral-100;
+  }
+
+  /* Comfortable default body text size/line-height per the readability requirement. */
+  p {
+    @apply text-base leading-relaxed sm:text-lg;
+  }
+
+  /* Respect prefers-reduced-motion globally as a safety net for any animation
+     that isn't already gated by the useReducedMotion hook. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
