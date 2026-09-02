@@ -3,6 +3,7 @@ import { ArrowDown, DoorOpen } from 'lucide-react';
 import { useSiteContent } from '../../context/ContentContext';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { Button } from '../common/Button';
+import { resolveAssetPath } from '../../utils/assetPath';
 
 interface OpeningSectionProps {
   onReady: () => void;
@@ -34,7 +35,7 @@ export function OpeningSection({ onReady }: OpeningSectionProps) {
         {content.ambientPhotos.openingBackground.map((photo, index) => (
           <motion.img
             key={photo.src}
-            src={photo.src}
+            src={resolveAssetPath(photo.src)}
             alt=""
             loading="lazy"
             initial={{ opacity: 0, scale: 1.05 }}
