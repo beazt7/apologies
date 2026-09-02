@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Music, Volume2, VolumeX } from 'lucide-react';
 import { useSiteContent } from '../../context/ContentContext';
+import { resolveAssetPath } from '../../utils/assetPath';
 
 /**
  * Optional background music control. Off by default, never autoplays, and only
@@ -34,7 +35,7 @@ export function MusicToggle() {
 
   return (
     <div className="fixed bottom-4 right-4 z-40">
-      <audio ref={audioRef} src={content.music.src} loop preload="none" />
+      <audio ref={audioRef} src={resolveAssetPath(content.music.src)} loop preload="none" />
       <button
         type="button"
         onClick={toggle}
