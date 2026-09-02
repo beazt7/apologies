@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { PhotoLightbox } from './PhotoLightbox';
 import type { AmbientPhoto } from '../../types/content';
+import { resolveAssetPath } from '../../utils/assetPath';
 
 interface PhotoDriftClusterProps {
   photos: AmbientPhoto[];
@@ -50,14 +51,14 @@ export function PhotoDriftCluster({ photos, className = '' }: PhotoDriftClusterP
               className="absolute inset-0 m-auto h-24 w-20 cursor-pointer rounded-md border-4 border-white shadow-paper transition-shadow hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blush-500 dark:border-neutral-800 sm:h-32 sm:w-28"
               style={{ zIndex: fan.z }}
             >
-              <img src={photo.src} alt={photo.alt} loading="lazy" className="h-full w-full rounded-sm object-cover" />
+              <img src={resolveAssetPath(photo.src)} alt={photo.alt} loading="lazy" className="h-full w-full rounded-sm object-cover" />
             </motion.button>
           );
         })}
       </div>
 
       {openPhoto && (
-        <PhotoLightbox src={openPhoto.src} alt={openPhoto.alt} onClose={() => setOpenPhoto(null)} />
+        <PhotoLightbox src={resolveAssetPath(openPhoto.src)} alt={openPhoto.alt} onClose={() => setOpenPhoto(null)} />
       )}
     </>
   );
